@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :admin do
-    get 'homes/top'
-    get 'homes/about'
-  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -25,7 +16,13 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get "/home/about", to: "homes#about"
-  
+
+
+  namespace :admin do
+    get 'homes/top'
+    get 'homes/about'
+  end
+
   namespace :admin do
     get 'orders_details/update'
   end
@@ -52,6 +49,10 @@ Rails.application.routes.draw do
     get 'items/show'
     get 'items/edit'
     get 'items/update'
+  end
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
   end
   namespace :public do
     get 'addresses/index'
