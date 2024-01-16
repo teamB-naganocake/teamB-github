@@ -8,7 +8,7 @@ class CreateCustomers < ActiveRecord::Migration[6.1]
       t.integer :postal_code
       t.string :address
       t.integer :telephone_number
-      t.boolean :is_active
+      t.boolean :is_active, default: true
       t.timestamps
     end
   end
