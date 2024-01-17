@@ -5,10 +5,10 @@ class CreateCustomers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :first_name_kana
       t.string :last_name_kana
-      t.interger :postal_code
+      t.integer :postal_code
       t.string :address
-      t.interger :telephone_number
-      t.boolean :is_active
+      t.integer :telephone_number
+      t.boolean :is_active, default: true
       t.timestamps
     end
   end
