@@ -1,13 +1,13 @@
 <h2>管理者ログイン</h2>
 
-<%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
+<%= form_with model: @admin, url: new_admin_session_path, local: true do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
