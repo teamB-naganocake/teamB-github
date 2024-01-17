@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    get 'homes/top'
+    root to: "homes#top"
     get 'homes/about'
     resources :orders_details, only: [:update]
     resources :orders, only: [:show, :update]
@@ -23,21 +23,29 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+    root to: "homes#top"
+    get 'about', to: "homes#about", as: "about"
+
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
     resources :items, only: [:index, :edit, :create, :update, :destroy]
+
     resources :orders, only: [:new, :create, :index, :show]
-      get 'orders/confirm'
-      get 'orders/thanks'
+      post 'orders/confirm', to: "orders#confirm"
+      get 'orders/thanks', to: "orders#thanks"
+
     resources :cart_items,only: [:index,:create,:update,:destroy] do
       collection do
         delete "all_destroy"   #パスが　all_destroy_cart_items_path, method: :delete　となる
       end
     end
-    resources :customers, only: [:show, :edit, :update]
-      get 'customers/unsubscribe'
-      get 'customers/withdraw'
+
+    get "customers/mypage", to: "customers#show"
+    get "customers/information/edit", to: "customers#edit"
+    patch "customers/information", to: "customers#update"
+    get 'customers/unsubscribe', to: "customers#unsubscribe"
+    get 'customers/withdraw', to: "customers#withdraw"
+
     resources :items, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
