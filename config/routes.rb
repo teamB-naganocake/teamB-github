@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  # 管理者用
-  # URL /admin/sign_in ...
+  # 管理者用 URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
-  # 顧客用
-  # URL /customers/sign_in ...
+  # 顧客用 URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -14,77 +12,29 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-
-
-
   namespace :admin do
     get 'homes/top'
     get 'homes/about'
+    resources :orders_details, only: [:update]
+    resources :orders, only: [:show, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
-  namespace :admin do
-    get 'orders_details/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
   namespace :public do
     get 'homes/top'
     get 'homes/about'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/thanks'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :items, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show]
+      get 'orders/confirm'
+      get 'orders/thanks'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+      get 'cart_items/destroy_all'
+    resources :customers, only: [:show, :edit, :update]
+      get 'customers/unsubscribe'
+      get 'customers/withdraw'
+    resources :items, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
