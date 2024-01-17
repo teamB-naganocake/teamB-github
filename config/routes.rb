@@ -14,8 +14,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: "homes#top"
-  get "/home/about", to: "homes#about"
+
 
 
   namespace :admin do
@@ -69,13 +68,11 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
+  resources :cart_items,only: [:index,:create,:update,:destroy] do
+      collection do
+        delete "all_destroy"   #パスが　all_destroy_cart_items_path, method: :delete　となる
+      end 
+  e
   namespace :public do
     get 'customers/show'
     get 'customers/edit'
