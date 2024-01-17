@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2024_01_16_074823) do
     t.integer "postal_code"
     t.string "address"
     t.integer "telephone_number"
-    t.boolean "is_active", default: true
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2024_01_16_074823) do
     t.string "name"
     t.text "introduction"
     t.integer "price"
-    t.boolean "is_active", default: true
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
