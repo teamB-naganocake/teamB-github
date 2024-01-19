@@ -5,11 +5,11 @@ class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
-    public_homes_top_path
+    public_top_path
   end
 
   def after_sign_out_path_for(resource)
-    public_homes_top_path
+    public_top_path
   end
 
   # GET /resource/sign_in
@@ -39,9 +39,9 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 
-  protected
+  # protected
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-  end
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  # end
 end
