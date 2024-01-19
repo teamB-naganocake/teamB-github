@@ -8,9 +8,9 @@
     <div class="row">
       <div class="col"><%= f.label "お名前" %></div>
       <div class="col"><%= f.label "(姓)" %></div>
-      <div class="col"><%= f.text_field :last_name, :size => "10", placeholder: "姓" %></div>
+      <div class="col"><%= f.text_field :last_name,  placeholder: "姓" %></div>
       <div class="col"><%= f.label "(名)" %></div>
-      <div class="col"><%= f.text_field :first_name, :size => "10", placeholder: "名" %></div>
+      <div class="col"><%= f.text_field :first_name,  placeholder: "名" %></div>
     </div>
     <div class="row">
       <div class="col"><%= f.label "フリガナ" %></div>
@@ -25,7 +25,7 @@
     </div>
     <div class="row">
       <div class="col"><%= f.label "郵便番号(ハイフンなし)" %></div>
-      <div class="col"><%= f.text_field :postcode, placeholder: "xxxxxxx" %></div>
+      <div class="col"><%= f.text_field :postal_code, placeholder: "xxxxxxx" %></div>
     </div>
     <div class="row">
       <div class="col"><%= f.label "住所" %></div>
