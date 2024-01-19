@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <h2>配送先登録</h2>
-      <%= form_with model: @address, local: true do |f| %>
+      <%= form_with model: @address, url: @addresses_path, local: true do |f| %>
       <table>
         <tr>
           <div>
@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= @addresses.each do |address| %>
+          <% @addresses.each do |address| %>
           <tr>
             <td><%= addresses.postal_code %></td>
             <td><%= addresses.address %></td>
