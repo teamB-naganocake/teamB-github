@@ -1,7 +1,6 @@
+<h1><%= @customer.full_name %>さんの会員詳細編集</h1>
 
-<h1><%= customer.full_name + "さんの会員詳細編集" %></h1>
-
-<%= form_with model: @customer, url: public_customers_information_path, local: true do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
   <div>
     <p>会員ID</p>
     <p><%= @customer.id %></p>
@@ -44,8 +43,6 @@
     <div>
       <%= f.radio_button :is_active, true %>
       <%= f.label :is_active_true, "有効" %>
-    </div>
-    <div>
       <%= f.radio_button :is_active, false %>
       <%= f.label :is_active_true, "退会" %>
     </div>

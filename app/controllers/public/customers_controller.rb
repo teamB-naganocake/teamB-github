@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to public_customers_mypage_path, notice: "変更内容を保存しました。"
+      redirect_to public_customers_information_path, notice: "変更内容を保存しました。"
     else
       render :edit
     end

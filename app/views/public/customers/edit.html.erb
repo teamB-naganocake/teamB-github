@@ -1,6 +1,6 @@
 <h1>会員情報編集</h1>
 
-<%= form_with model: @customer, url: public_customers_information_path, local: true do |f| %>
+<%= form_with model: @customer, url: public_customers_mypage_path, local: true do |f| %>
   <div>
     <%= f.label :"氏名" %>
     <%= f.text_field :last_name %>
