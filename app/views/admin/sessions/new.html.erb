@@ -2,12 +2,12 @@
 
 <%= form_with model: @admin, url: new_admin_session_path, local: true do |f| %>
   <div class="field">
-    <%= f.label :メールアドレス %><br />
+    <%= f.label :"メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %><br />
+    <%= f.label :"パスワード" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
