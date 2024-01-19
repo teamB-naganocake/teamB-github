@@ -1,2 +1,10 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div>
+  <% attachment_image_tag (@item, :image, size: "100x100") %>
+</div>
+<div>
+  <h1><%= @item.name %></h1>
+  <p><%= @itme.introduction %></p>
+  <h3><%= @item.price %>円（税抜）</h3>
+  <!--数量選択-->
+  <!--カートに入れる-->
+</div>
