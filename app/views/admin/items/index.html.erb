@@ -19,7 +19,12 @@
         <!--名前をクリックし詳細ページに移動-->
         <th><%= item.price %>円</th>
         <th><%= item.genre.name %></th>
-        <th>販売ステータス（販売中 or 販売停止中</th>
+        <th>  　<% if item.sales_status == true %>
+                 <p class="text-success font-weight-bold">販売中</p>
+                <% else %>
+                  <p class="text-danger font-weight-bold">販売停止中</p>
+                <% end %>
+        </th>
       </tr>
       <% end %>
   </tbody>

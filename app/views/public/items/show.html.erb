@@ -6,5 +6,6 @@
   <p><%= @itme.introduction %></p>
   <h3><%= @item.price %>円（税抜）</h3>
   <!--数量選択-->
-  <!--カートに入れる-->
+  <p><%= render "item_amount_form", cart_item: @cart_item, item: @item %></p>
 </div>
+
