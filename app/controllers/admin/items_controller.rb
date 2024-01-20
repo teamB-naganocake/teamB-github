@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "商品の新規登録が完了しました"
-      redirect_to item_path(@item.id)
+      redirect_to admin_items_path(@item.id)
     else
       flash[:notice] = "商品の新規登録に失敗しました"
       render :new
@@ -41,7 +41,7 @@ class Admin::ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :genre, :price)
+    params.require(:item).permit(:image, :name, :introduction, :genre_id, :price,:is_active)
   end
   #販売ステータス追加・genre?genre.name? (柳)
 end

@@ -6,7 +6,6 @@
     <p><%= @customer.id %></p>
   </div>
 
-  <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: :true do |f| %>
     <div class="row">
       <div class="col"><%= f.label "お名前" %></div>
       <div class="col"><%= f.label "(姓)" %></div>
