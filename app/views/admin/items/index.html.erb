@@ -1,5 +1,7 @@
 <h1>商品一覧</h1>
 
+ <%= link_to '商品追加',new_admin_item_path %>
+
 <table>
   <thead>
     <tr>
@@ -14,16 +16,15 @@
     <% @items.each do |item| %>
       <tr>
         <th><%= item.id %></th>
-        <th><%= item.name %></th>
-        <%#= link_to item.name, admins_item_path(item) %>
+        <th><%= link_to item.name, admin_items_path(@item) %></th>
         <!--名前をクリックし詳細ページに移動-->
         <th><%= item.price %>円</th>
         <th><%= item.genre.name %></th>
-        <th>  　<% if item.sales_status == true %>
-                 <p class="text-success font-weight-bold">販売中</p>
-                <% else %>
-                  <p class="text-danger font-weight-bold">販売停止中</p>
-                <% end %>
+        <th><% if item.is_active %>
+               <p>販売中</p>
+            <% elsif %>
+               <p>販売停止</p>
+            <% end %>
         </th>
       </tr>
       <% end %>
