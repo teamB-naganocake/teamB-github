@@ -1,49 +1,54 @@
 <h1>注文履歴詳細</h1>
 
-<div>
-  <h2>注文情報</h2>
-  <div>
-    <div>注文日</div>
-    <div><%= @order.created_at.strftime("%Y/%m/%d") %></div>
-  </div>
+<h2>注文情報</h2>
+<table>
+  <tbody>
+    <tr>
+      <th>注文日</th>
+      <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+    </tr>
 
-  <div>
-    <div>配送先</div>
-    <div>
-      〒<%= @order.postal_code %><br>
-      <%= @order.address %><br>
-      <%= @order.name %>
-    </div>
-  </div>
+    <tr>
+      <th>配送先</th>
+      <td>
+        〒<%= @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </td>
+    </tr>
 
-  <div>
-    <div>支払方法</div>
-    <div><%= @order.payment_method_i18n %></div>
-  </div>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
 
-  <div>
-    <div>ステータス</div>
-    <div><%= @order.status_i18n %></div>
-  </div>
-</div>
+    <tr>
+      <th>ステータス</th>
+      <td><%= @order.status_i18n %></td>
+    </tr>
+  </tbody>
+</table>
 
-<div>
-  <h2>請求情報</h2>
-  <div>
-    <div>商品合計</div>
-    <div><%= @order.total_payment - @order.shipping_cost %></div>
-  </div>
 
-  <div>
-    <div>配送料</div>
-    <div><%= @order.shipping_cost %></div>
-  </div>
+<h2>請求情報</h2>
+<table>
+  <tbody>
+    <tr>
+      <th>商品合計</th>
+      <td><%= @order.total_payment - @order.shipping_cost %></td>
+    </tr>
 
-  <div>
-    <div><span>ご請求額</span></div>
-    <div><%= @order.total_payment %></div>
-  </div>
-</div>
+    <tr>
+      <th>配送料</th>
+      <td><%= @order.shipping_cost %></td>
+    </tr>
+
+    <tr>
+      <th>ご請求額</th>
+      <td><%= @order.total_payment %></td>
+    </tr>
+  </tbody>
+</table>
 
 
 <h2>注文内容</h2>
@@ -67,5 +72,4 @@
       </tr>
     <% end %>
   </tbody>
-
 </table>

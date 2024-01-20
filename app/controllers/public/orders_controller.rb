@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     if order.save
       # カート内商品は消すために、情報を注文詳細に移す。
       current_customer.cart_items.each do |cart_item|
@@ -33,11 +34,13 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @sum = 0
     @order.shipping_cost = 800
+    @order.total_payment = params[:order][:payment_method].to_i
 
     if params[:order][:select_address] == "0" # 自身の住所
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.customer.full_name
+      # @order.name = current_customer.first_name + current_customer.last_name
 
     elsif params[:order][:select_address] == "1" # 登録済み住所
       @address = Address.find(params[:order][:address_id])
@@ -49,7 +52,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-      
+
     else
       render :new
     end
@@ -69,6 +72,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:address, :name, :shipping_cost, :total_payment, :payment_method, :stats)
+    params.require(:order).permit(:address, :postal_code, :name, :shipping_cost, :total_payment, :payment_method, :stats)
   end
 end
