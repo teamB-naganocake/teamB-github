@@ -1,6 +1,6 @@
 <h1>注文履歴詳細</h1>
 <table>
-  <thead>
+  <tbody>
     <tr>
       <th>購入者</th>
       <td><%= @order.customer.full_name %></td>
@@ -30,7 +30,7 @@
         <% end %>
       </td>
     </tr>
-  </thead>
+  </tbody>
 </table>
 
 
@@ -46,6 +46,7 @@
       <th></th>
     </tr>
   </thead>
+
   <tbody>
     <% @order_details.each do |order_detail| %>
     <tr>
@@ -66,17 +67,17 @@
   <thead>
     <tr>
       <th>商品合計</th>
-      <td></td>
+      <td><%= @order.total_payment - @order.shipping_cost %>円</td>
     </tr>
 
     <tr>
       <th>送料</th>
-      <td></td>
+      <td><%= @order.shipping_cost %>円</td>
     </tr>
 
     <tr>
       <th>請求書額</th>
-      <td></td>
+      <td><%= @order.total_payment %>円</td>
     </tr>
   </thead>
 </table>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    get 'top', to: "homes#top", as: "top"
+    get 'top', to: "homes#top"#, as: "top"
     get 'about', to: "homes#about", as: "about"
     resources :orders_details, only: [:update]
     resources :orders, only: [:show, :update]
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    get 'top', to: "homes#top", as: "top"
+    get 'top', to: "homes#top"#, as: "top"
     get 'about', to: "homes#about", as: "about"
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
