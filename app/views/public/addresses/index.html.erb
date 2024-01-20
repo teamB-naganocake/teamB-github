@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <h2>配送先登録</h2>
-      <%= form_with model: @address, url: addresses_path, local: true do |f| %>
+      <%= form_with model: @address, url: public_addresses_path, local: true do |f| %>
       <table>
         <tr>
           <div>
@@ -41,12 +41,12 @@
         <tbody>
           <% @addresses.each do |address| %>
           <tr>
-            <td><%= addresses.postal_code %></td>
-            <td><%= addresses.address %></td>
-            <td><%= addresses.name %></td>
+            <td><%= address.postal_code %></td>
+            <td><%= address.address %></td>
+            <td><%= address.name %></td>
             <td>
-              <%= link_to "編集する", edit_address_path(address), class:"btn btn-success" %>
-              <%= link_to "削除する", address_path, method: :delete, "data-confirm" => "本当に削除しますか？" , class:"btn btn-danger" %>
+              <%= link_to "編集する", edit_public_address_path(address), class:"btn btn-success" %>
+              <%= link_to "削除する", public_address_path(address), method: :delete, "data-confirm" => "本当に削除しますか？" , class:"btn btn-danger" %>
             </td>
           </tr>
           <% end %>
