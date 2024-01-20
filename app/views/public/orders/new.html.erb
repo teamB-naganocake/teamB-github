@@ -13,20 +13,20 @@
   <div>
     <h2>お届け先</h2>
     <div>
-      <%= f.radio.button :address, 0, checked: true %>
+      <%= f.radio_button :select_address, "0" %>
       <%= f.label :select_address_0, "ご自身の住所" %><br>
-      〒<%= current_customer.postal_code + " " + current_customer.address %><br>
-      <%= current_customer.full_name %><br>
+      <%#= current_customer.postal_code + " " + current_customer.address %>
+      <%#= current_customer.full_name %>
     </div>
 
     <div>
-      <%= f.radio.button :address, 1 %>
+      <%= f.radio_button :select_address, "1" %>
       <%= f.label :select_address_1, "登録済住所から選択" %><br>
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
     </div>
 
     <div>
-      <%= f.radio.button :address, 2 %>
+      <%= f.radio_button :select_address, "2" %>
       <%= f.label :select_address_2, "新しいお届け先" %><br>
 
       <%= f.label "郵便番号(ハイフンなし)" %>
