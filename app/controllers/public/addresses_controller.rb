@@ -2,9 +2,8 @@ class Public::AddressesController < ApplicationController
   #before_action :authenticate_customer!
 
   def index
-    @address_new = Address.new
-    #@customer = current_customer.addresses
-    @addresses = Address.all
+    @address = Address.new
+    #@addresses = current_customer.addresses
   end
 
   def edit
@@ -12,7 +11,6 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
@@ -23,7 +21,6 @@ class Public::AddressesController < ApplicationController
       flash[:danger] = "新しい配送先内容に問題があります。"
       render :index
     end
-
   end
 
   def update
@@ -33,7 +30,7 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       flash[:danger] = "配送先変更ができませんでした。"
-      redirect_to addresses_path
+      render "edit"
     end
   end
 

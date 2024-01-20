@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TeamBGithub</title>
+    <title>TeamB Nagano Cake!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,97 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container">
+          <a class="navbar-brand" href="top"><%= image_tag "chocolate_cake1.JPG", :size => "40x50" %></a>
+
+          <div class="collapse navbar-collapse" >
+            <ul class="navbar-nav ml-auto">
+
+
+            <!--管理者ログイン時ー-->
+            <% if admin_signed_in? %>
+              <li class="nav">
+                <%= link_to admin_items_path do %>
+                  <i class="">商品一覧</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to admin_customers_path do %>
+                  <i class="">会員一覧</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to admin_orders_path  do %>
+                  <i class="">注文履歴一覧</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to admin_genres_path do%>
+                  <i class="">ジャンル一覧</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                  <i class="">ログアウト</i>
+                <% end %>
+              </li>
+
+
+            <!--ログインした時ー-->
+            <% elsif customer_signed_in? %>
+              <li class="nav">
+                <%= link_to public_customers_mypage_path do %>
+                  <i class="">マイページ</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to  public_item_path do %>
+                  <i class="">商品一覧</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to public_cart_item_path do %>
+                  <i class="">カート</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to destroy_customer_session_path, method: :delete do %>
+                  <i class="">ログアウト</i>
+                <% end %>
+              </li>
+            <% else %>
+
+
+            <!--ログインしてないー-->
+              <li class="nav">
+                <%= link_to public_about_path do %>
+                  <i class="">About</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to public_items_path do %>
+                  <i class="">商品一覧</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to new_customer_registration_path, data: {"turbolinks" => false} do %>
+                  <i class="">新規登録</i>
+                <% end %>
+              </li>
+              <li class="nav">
+                <%= link_to  new_customer_session_path do%>
+                  <i class="">ログイン</i>
+                <% end %>
+              </li>
+
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
