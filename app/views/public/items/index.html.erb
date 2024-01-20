@@ -17,6 +17,12 @@
         <tr>
             <th><%= item.price %>円</th>
         </tr>
+         <th><% if item.is_active %>
+               <p>販売中</p>
+            <% elsif %>
+               <p>販売停止</p>
+            <% end %>
+        </th>
     </table>
 </div>
 <% end %>
