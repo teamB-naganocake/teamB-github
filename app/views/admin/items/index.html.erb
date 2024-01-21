@@ -16,7 +16,7 @@
     <% @items.each do |item| %>
       <tr>
         <th><%= item.id %></th>
-        <th><%= link_to item.name, admin_items_path(@item) %></th>
+        <th><%= link_to item.name,edit_admin_item_path(item.id) %></th>
         <!--名前をクリックし詳細ページに移動-->
         <th><%= item.price %>円</th>
         <th><%= item.genre.name %></th>
