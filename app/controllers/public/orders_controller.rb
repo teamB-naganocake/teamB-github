@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address] == "0" # 自身の住所
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.customer.full_name
+      @order.name = current_customer.full_name
       # @order.name = current_customer.first_name + current_customer.last_name
 
     elsif params[:order][:select_address] == "1" # 登録済み住所

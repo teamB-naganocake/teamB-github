@@ -9,11 +9,11 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     #カート？（柳）
   end
-  
-  
+
+
   def list_params
     params.require(:item).permit()
   end
-  
-  
+
+
 end
