@@ -4,14 +4,14 @@
     <table>
         <tr>
             <th>
-                <%= link_to item_path(item) do %>
-                  <%= attachment_image_tag(item, :imgge,size: "100x100") %>
+                <%= link_to public_items_path(item) do %>
+                  <%= image_tag item.get_image(100,100) %>
                 <% end %>
             </th>
         </tr>
         <tr>
           <th>
-            <%= link_to item.name, item_path(item) =%>
+            <%= link_to item.name, public_item_path(item) %>
           </th>
         </tr>
         <tr>

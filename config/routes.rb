@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    resources :items, only: [:index, :edit, :create, :update, :destroy]
+    resources :items, only: [:show, :index, :edit, :create, :update, :destroy]
 
     resources :orders, only: [:new, :create, :index, :show]
       post 'orders/confirm', to: "orders#confirm"
@@ -45,8 +45,6 @@ Rails.application.routes.draw do
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
     patch 'customers/withdraw', to: "customers#withdraw"
-
-    resources :items, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
