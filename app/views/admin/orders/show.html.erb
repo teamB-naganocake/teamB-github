@@ -26,7 +26,7 @@
       <td>
         <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |order| %>
           <%= order.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-          <%= f.submit "更新する" %>
+          <%= order.submit "更新する" %>
         <% end %>
       </td>
     </tr>
