@@ -1,9 +1,10 @@
 <h1>商品編集</h1>
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, url: admin_item_path,method: :patch do |f| %>
+
 
 <div>
   <%= f.label :商品画像 %>
-  <%= f.attachment_field :image %>
+
 </div>
 
 <div>
