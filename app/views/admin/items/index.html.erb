@@ -16,7 +16,11 @@
     <% @items.each do |item| %>
       <tr>
         <th><%= item.id %></th>
+<<<<<<< HEAD
         <th><%= link_to item.name,edit_admin_item_path(item.id) %></th>
+=======
+        <th><%= link_to item.name, admin_item_path(item) %></th>
+>>>>>>> origin/develop
         <!--名前をクリックし詳細ページに移動-->
         <th><%= item.price %>円</th>
         <th><%= item.genre.name %></th>

@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <th>税抜価格</th>
-    <th><%= item.price %>円</th>
+    <th><%= @item.price %>円</th>
   </tr>
   <tr>
     <th><%= f.label :販売ステータス %></th>
@@ -23,7 +23,7 @@
         <%= f.label :is_active, "販売中" %>
         <%= f.radio_button :is_active, false %>
         <%= f.label :is_active, "販売停止中" %>
-    </td>   
+    </td>
   </tr>
 </table>
 
