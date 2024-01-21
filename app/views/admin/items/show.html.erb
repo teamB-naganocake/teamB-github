@@ -1,5 +1,5 @@
 <h1>商品詳細</h1>
-<div>イメージ</div>
+
 <table>
   <tr>
     <th>商品名</th>
@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <th>商品説明</th>
-    <th><% @item.introduction %></th>
+    <th><%= @item.introduction %></th>
   </tr>
   <tr>
     <th>ジャンル</th>
@@ -18,15 +18,16 @@
     <th><%= @item.price %>円</th>
   </tr>
   <tr>
-    <th><%= f.label :販売ステータス %></th>
-    <td><%= f.radio_button :is_active, true, checked: true %>
-        <%= f.label :is_active, "販売中" %>
-        <%= f.radio_button :is_active, false %>
-        <%= f.label :is_active, "販売停止中" %>
-    </td>
+    <th><%  if @item.is_active == true %>
+        <p>販売中</p>
+
+      <% else %>
+        <h3>販売停止中です</h3>
+      <% end %>
+    </th>
   </tr>
 </table>
 
 <div>
-  <%= link_to '編集', edit_admins_item_path(@item), class: "btn btn-sucess"
+  <%= link_to "編集する", edit_admin_item_path %>
 </div>
