@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @items = Item.all
@@ -38,7 +38,7 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :price,:is_active)

@@ -4,8 +4,7 @@
 <div>
   <h1><%= @item.name %></h1>
   <p><%= @item.introduction %></p>
-  <h3><%= @item.price %>円（税抜）</h3>
+  <p><%= @item.price.to_s(:delimited) %>円（税抜）</p>
   <!--数量選択-->
   <p><%= render "item_amount_form", cart_item: @cart_item, item: @item %></p>
 </div>
-

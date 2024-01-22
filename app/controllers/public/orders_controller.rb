@@ -7,19 +7,20 @@ class Public::OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
-    @order.customer_id = current_customer.id
+    order.customer_id = current_customer.id
+
     if order.save
-      # カート内商品は消すために、情報を注文詳細に移す。
       current_customer.cart_items.each do |cart_item|
         @order_detail = OrderDetail.new
-        @order_detail.order_id = @order.id
+        @order_detail.order_id = order.id
         @order_detail.item_id = cart_item.item_id
         @order_detail.amount = cart_item.amount
         @order_detail.price = cart_item.item.with_tax_price
         @order_detail.save
       end
       current_customer.cart_items.destroy_all
-      redirect_to public_thanks_orders_path
+      redirect_to public_orders_thanks_path
+
     else
       @orders = current_customer.orders
       flash.now[:alert] = "注文できませんでした。"
@@ -40,7 +41,6 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
-      # @order.name = current_customer.first_name + current_customer.last_name
 
     elsif params[:order][:select_address] == "1" # 登録済み住所
       @address = Address.find(params[:order][:address_id])
@@ -52,12 +52,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-
-    else
-      render :new
     end
-    @cart_items = current_customer.cart_items
-    render :confirm
   end
 
   def index
@@ -70,8 +65,16 @@ class Public::OrdersController < ApplicationController
     @order_details = @order.order_details
   end
 
+
   private
+
   def order_params
-    params.require(:order).permit(:address, :postal_code, :name, :shipping_cost, :total_payment, :payment_method, :stats)
+    params.require(:order).permit(:address,
+                                  :postal_code,
+                                  :name,
+                                  :shipping_cost,
+                                  :total_payment,
+                                  :payment_method,
+                                  :customer_id)
   end
 end
