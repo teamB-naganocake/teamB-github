@@ -1,29 +1,33 @@
 <h1>商品一覧</h1>
+
+<!--販売停止中は文字か画像に何か手を加えて分かりやすくする？　北森-->
 <div>
-    <% @items.each do |item| %>
+  <% @items.each do |item| %>
     <table>
-        <tr>
-            <th>
-                <%= link_to item_path(item) do %>
-                  <%= attachment_image_tag(item, :imgge,size: "100x100") %>
-                <% end %>
-            </th>
-        </tr>
-        <tr>
-          <th>
-            <%= link_to item.name, item_path(item) =%>
-          </th>
-        </tr>
-        <tr>
-            <th><%= item.price %>円</th>
-        </tr>
-         <th><% if item.is_active %>
-               <p>販売中</p>
-            <% elsif %>
-               <p>販売停止</p>
-            <% end %>
-        </th>
+      <tr>
+        <td>
+          <%= link_to public_items_path(item) do %>
+            <%= image_tag item.get_image(100,100) %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to item.name, public_item_path(item) %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= item.price.to_s(:delimited) %>円</td>
+      </tr>
+      <td>
+        <% if item.is_active %>
+          <p>販売中</p>
+        <% elsif %>
+          <p>販売停止</p>
+        <% end %>
+      </td>
     </table>
+  <% end %>
 </div>
-<% end %>
+
 

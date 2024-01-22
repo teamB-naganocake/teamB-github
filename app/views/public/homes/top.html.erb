@@ -1,19 +1,40 @@
-<head>
-  <div style="background-color: orange;">
-    <div class="text-center">
+<div class="text-center">
     <h1>Welcome!!!</h1>
-  　</div>
+</div>
+
+
+<div class="text-center">
+  <div class="container">
+    <div class"mx-auto">
+        <p>ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員ではない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+        </p>
+    </div>
   </div>
-</head>
+</div>
 
+<div class="container new-item">
+  <h2>新着商品</h2>
+  <div class="row">
+      <% @items.first(4).each do |item| %>
+    <div class="col-md-3 col-sm-6">
+        <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+          <%= link_to public_items_path do %>
 
-
-<h1>ながのCAKEようこそ！</h1>
-
-<p>長野県にある美味しいケーキ販売のECサイトです<br>
-購入時には会員登録が必要になります。</p>
-
-<%= link_to "aboutページ", public_about_path %>
-
-
-<%= image_tag 'chocolate_cake1.JPG' %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text"><%= item.name %></p>
+            <% if item.is_active == true %>
+              <p class="card-text"><%= item.price %>円</p>
+            <% else %>
+              <p class="card-text text-danger">販売停止中</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="all-items-show-button"><%= link_to "全ての商品をみる", public_items_path %></div>
+</div>
