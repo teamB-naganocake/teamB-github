@@ -1,9 +1,13 @@
 <h1>商品一覧</h1>
 
 <!--販売停止中は文字か画像に何か手を加えて分かりやすくする？　北森-->
-<div>
+
+
+
+
+<div class="container new-item">
   <% @items.each do |item| %>
-    <table>
+    <div class="row">
       <tr>
         <td>
           <%= link_to public_items_path(item) do %>
@@ -26,8 +30,9 @@
           <p>販売停止</p>
         <% end %>
       </td>
-    </table>
+  </div>
   <% end %>
+  </div>
 </div>
 
 
