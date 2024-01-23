@@ -10,10 +10,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
-
-
   <body>
+#kitamori
+    <%#= render 'layouts/header' %>
+    
+    <main>
+      <%= yield %>
+    </main>
+#aoki
     <header>
       <div style="background-color: black;">
 
@@ -134,17 +138,18 @@
     <%= yield %>
 
 
-    <footer>
-    <div style="background-color: gray;">
-      <div class="container">
-        <div class="row">
-          <div class="col">
 
-            <p class="text-center">足を引っ張らない(Team B)<%= image_tag "asii_logo.png", :size => "30x30" %></p>
+    <footer>
+      <div style="background-color: gray;">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p class="text-center">足を引っ張らない(Team B)<%= image_tag "asii_logo.png", :size => "30x30" %></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </footer>
+    
   </body>
 </html>

@@ -11,3 +11,18 @@ Admin.create!(
    email: 'test@test.com',
    password: '000000'
 )
+
+# 5.times do |n|
+#    Customer.create!(
+#       last_name: "名字#{n + 1}",
+#       first_name: "名前#{n + 1}",
+#       last_name_kana: "ミョウジ#{n + 1}",
+#       first_name_kana: "ナマエ#{n + 1}",
+#       email: "test#{n + 1}@test.com",
+#       postal_code: "#{n + 1}",
+#       address: "東京#{n + 1}",
+#       telephone_number: "",
+#       password: "00000#{n + 1}",
+#       password_confirmation: "00000#{n + 1}"
+#  )
+# end
