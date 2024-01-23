@@ -1,10 +1,18 @@
-<div>
-  <%= image_tag @item.get_image(100,100) %>
+<div class="container">
+  <div class="row">
+<div class="col-xs-9">
+  	  <div class="row" style="margin-top: 50px;">
+  	  	<div style="float: left; margin: 15px 50px;">
+  <%= image_tag @item.get_image(300,300),fallback: "no_image.jpg" %>
 </div>
-<div>
-  <h1><%= @item.name %></h1>
+<div style="width:400px; height:300px; float:left;">
+  <h2><%= @item.name %></h2>
   <p><%= @item.introduction %></p>
-  <p><%= @item.price.to_s(:delimited) %>円（税抜）</p>
+  <p><%= (@item.price * 1.1).to_i %>円（税込）</p>
   <!--数量選択-->
   <p><%= render "item_amount_form", cart_item: @cart_item, item: @item %></p>
+</div>
+</div>
+</div>
+</div>
 </div>
