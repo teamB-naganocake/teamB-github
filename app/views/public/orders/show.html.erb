@@ -1,7 +1,9 @@
 <div class="container">
-  <h1>注文履歴詳細</h1>
-  <div class="row row-cols-2">
+  <div class="row mt-3 mb-3 offset-1 text-center">
+    <h1>注文履歴詳細</h1>
+  </div>
 
+  <div class="row row-cols-2 justify-content-center">
     <div class="col-6">
       <h2>注文情報</h2>
       <table class="table table-bordered">
@@ -10,7 +12,6 @@
             <th class="table-active">注文日</th>
             <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
           </tr>
-
           <tr>
             <th class="table-active">配送先</th>
             <td>
@@ -19,12 +20,10 @@
               <%= @order.name %>
             </td>
           </tr>
-
           <tr>
             <th class="table-active">支払方法</th>
             <td><%= @order.payment_method_i18n %></td>
           </tr>
-
           <tr>
             <th class="table-active">ステータス</th>
             <td><%= @order.stats_i18n %></td>
@@ -41,12 +40,10 @@
             <th class="table-active">商品合計</th>
             <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
           </tr>
-
           <tr>
             <th class="table-active">配送料</th>
             <td><%= @order.shipping_cost.to_s(:delimited) %></td>
           </tr>
-
           <tr>
             <th class="table-active">ご請求額</th>
             <td><%= @order.total_payment.to_s(:delimited) %></td>
@@ -55,10 +52,10 @@
       </table>
     </div>
 
-    <div class="col">
+    <div class="col-8">
       <h2>注文内容</h2>
       <table class="table table-bordered">
-        <thead class="table-active">
+        <thead class="table-active text-center">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -78,6 +75,6 @@
         </tbody>
       </table>
     </div>
-
   </div>
+  
 </div>
