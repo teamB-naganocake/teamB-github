@@ -1,38 +1,29 @@
-<h1>商品一覧</h1>
-
+<div class="container">
+  <div class="row"> 
+    <div class="col-xs-1">
+    </div>  
+    <div class="col-xs-9">
+      <h2>商品一覧(全<%= @items.count %>件)</h2>
 <!--販売停止中は文字か画像に何か手を加えて分かりやすくする？　北森-->
-
-
-
-
-<div class="container new-item">
-  <% @items.each do |item| %>
-    <div class="row">
-      <tr>
-        <td>
-          <%= link_to public_items_path(item) do %>
-            <%= image_tag item.get_image(100,100) %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= link_to item.name, public_item_path(item) %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= item.price.to_s(:delimited) %>円</td>
-      </tr>
-      <td>
-        <% if item.is_active %>
-          <p>販売中</p>
-        <% elsif %>
-          <p>販売停止</p>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="box" style="float:left; margin-right:20px;">
+              <%= link_to public_item_path(item) do %>
+              <%= image_tag item.get_image(120,120), fallback: "no_image.jpg" %>
+              <% end %>
+          <p><%= link_to item.name, public_item_path(item) %></p>
+          <p>    
+             <% if item.is_active %>
+             <%= item.price.to_s(:delimited) %>円
+             <% elsif %>
+             <p style="color:red">販売停止</p>
+             <% end %>
+           </p>
+          </div>
         <% end %>
-      </td>
+      </div>
+    </div>
   </div>
-  <% end %>
-  </div>
+  <%= paginate @items %>
 </div>
-
 
