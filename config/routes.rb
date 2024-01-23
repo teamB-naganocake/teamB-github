@@ -45,6 +45,11 @@ Rails.application.routes.draw do
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
     patch 'customers/withdraw', to: "customers#withdraw"
+    
+    
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  get "search" => "searches#search"
+
 end
