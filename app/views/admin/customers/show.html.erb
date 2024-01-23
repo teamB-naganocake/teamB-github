@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
       <h2><%= @customer.full_name %>さんの会員詳細 </h2>
     </div>
     <table class="table">
@@ -46,7 +46,7 @@
         <td></td>
         <td>
           <%= link_to "編集する", edit_admin_customer_path(@customer),class:"btn btn-success my-1 mx-4 px-4" %>
-          <%= link_to "注文履歴", public_orders_path,class:"btn btn-primary mx-4 px-4" %>
+          <%= link_to "注文履歴一覧を見る", admin_top_path,class:"btn btn-primary mx-4 px-4" %>
         </td>
       </tr>
     </table>
