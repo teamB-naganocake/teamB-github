@@ -11,145 +11,20 @@
   </head>
 
   <body>
-#kitamori
-    <%#= render 'layouts/header' %>
-    
+
+    <%= render 'layouts/header' %>
+
     <main>
       <%= yield %>
     </main>
-#aoki
-    <header>
-      <div style="background-color: black;">
 
-
-      <nav class="navbar navbar-expand-lg navbar-light">
-        
-           
-          
-          <a class="navbar-brand" href="/public/top"><%= image_tag "logo1.PNG", :size => "70x70" %></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-         
-            
-
-             
-             
-               <div class="ml-auto">
-                 <div class="mb-auto">
-                   <div class="d-flex">
-            <!--管理者ログイン時ー-->
-            <% if admin_signed_in? %>
-              <li class="nav">
-                <%= link_to admin_items_path do %>
-                  <i class="fa-solid fa-cake-candles">商品一覧</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to admin_customers_path do %>
-                  <i class="fa-solid fa-users">会員一覧</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to admin_top_path  do %>
-                  <i class="fa-solid fa-file-signature">注文履歴一覧</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to admin_genres_path do%>
-                  <i class="fa-solid fa-database">ジャンル一覧</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to destroy_admin_session_path, method: :delete do %>
-                  <i class="fa-regular fa-user">ログアウト</i>
-                <% end %>
-                
-              </li>
-
-
-            <!--ログインした時ー-->
-            <% elsif customer_signed_in? %>
-              <li class="nav">
-                <%= link_to public_customers_mypage_path do %>
-                  <i class="fa-solid fa-user">マイページ</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to  public_items_path do %>
-                  <i class="fa-solid fa-cake-candles">商品一覧</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to public_cart_items_path do %>
-                  <i class="fa-solid fa-cart-flatbed-suitcase">カート</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to destroy_customer_session_path, method: :delete do %>
-                  <i class="fa-regular fa-user">ログアウト</i>
-                <% end %>
-              </li>
-            <% else %>
-
-
-            <!--ログインしてないー-->
-              <li class="nav">
-                <%= link_to public_about_path do %>
-                  <i class="fa-solid fa-house">About</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to public_items_path do %>
-                  <i class="fa-solid fa-cake-candles">商品一覧</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to new_customer_registration_path, data: {"turbolinks" => false} do %>
-                  <i class="fa-regular fa-user">新規登録</i>
-                <% end %>
-              </li>
-              <li class="nav">
-                <%= link_to  new_customer_session_path do%>
-                  <i class="fa-solid fa-user">ログイン</i>
-                <% end %>
-              </li>
-              
-              
-              
-              
-              
-
-            <% end %>
-            </ul>
-          </div>
-        </div>
-        <li class="search_form">
-                <%= form_with url: search_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :word %>
-                  <%= f.select :range, options_for_select([['会員氏名'], ['商品情報']]) %>
-                  <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-                  <%= f.submit "検索", class: "btn btn-primary" %>
-                <% end %>
-              </li>
-      </nav>
-    </header>
-    <%= yield %>
-
-
-
-    <footer>
-      <div style="background-color: gray;">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <p class="text-center">足を引っ張らない(Team B)<%= image_tag "asii_logo.png", :size => "30x30" %></p>
-            </div>
-          </div>
+    <div style="background-color: gray;">
+      <div class="footer row justify-content-center">
+        <div class="col-6 p-3">
+          <div class="footer-content text-center">足を引っ張らない(Team B)<%= image_tag "asii_logo.png", :size => "30x30" %></div>
         </div>
       </div>
-    </footer>
-    
+    </div>
+
   </body>
 </html>

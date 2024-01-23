@@ -1,9 +1,19 @@
-<h1>本当に退会しますか？</h1>
-<p>
-  退会すると、会員登録情報や<br>
-  これまでの購入履歴が閲覧できなくなります。<br>
-  退会する場合は、「退会する」をクリックしてください。
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col text-center" style="height: 500px;">
+      <h1 class="">本当に退会しますか？</h1>
 
-<%= link_to "退会しない", public_customers_mypage_path %>
-<%= link_to "退会する", public_top_path %>
+      <p>
+        退会すると、会員登録情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+
+      <div class="my-5">
+        <%= link_to "退会しない", public_customers_mypage_path, class:"mr-5 btn btn-primary" %>
+        <%= link_to "退会する", public_top_path, class:"ml-5 btn btn-danger" %>
+      </div>
+
+    </div>
+  </div>
+</div>

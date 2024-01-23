@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top', to: "homes#top"#, as: "top"
-    get 'about', to: "homes#about", as: "about"
+    get 'about', to: "homes#about"#, as: "about"
     resources :orders_details, only: [:update]
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
@@ -45,11 +45,11 @@ Rails.application.routes.draw do
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
     patch 'customers/withdraw', to: "customers#withdraw"
-    
-    
+
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+
   get "search" => "searches#search"
 
 end
