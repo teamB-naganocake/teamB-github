@@ -43,5 +43,4 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :price,:is_active)
   end
-  #販売ステータス追加・genre?genre.name? (柳)
 end

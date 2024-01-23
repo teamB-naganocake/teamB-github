@@ -1,6 +1,10 @@
-<h1>会員一覧</h1>
-
-<table>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h2>会員一覧</h2>
+      <div class="row my-3">
+      <div class="col-sm-10 px-sm-0 offset-sm-1">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>会員ID</th>
@@ -9,22 +13,23 @@
       <th>ステータス</th>
     </tr>
   </thead>
-
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
         <td>
-          <%= link_to admin_customer_path(customer) do %>
-            <%= customer.full_name %>
-          <% end %>
+          <%= link_to admin_customer_path(customer) do %><%= customer.full_name %><% end %>
         </td>
         <td><%= customer.email %></td>
         <td>
-          <%= customer.customer_status %>
+          <%#= customer.customer_status %>
+           <% if customer.customer_status == true%>
+                  <p class="">退会済</p>
+                <% else %>
+                  <p class="text-success">有効</p>
+                <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
-
 </table>
