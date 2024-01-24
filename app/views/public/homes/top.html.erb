@@ -20,7 +20,7 @@
           <% @items.first(4).each do |item| %>
             <div class="col-md-3 col-sm-6">
               <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-                <%= link_to public_items_path do %>
+                <%= link_to public_item_path(item) do %>
                 <%= image_tag item.get_image(100,100) %>
                 <% end %>
                 <div class="card-body">
