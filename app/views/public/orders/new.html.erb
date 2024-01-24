@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col">
         <h2>お届け先</h2>
-        <div class="form-check">
+        <div class="form-check my-3">
           <%= f.radio_button :select_address, "0", checked: true, class:"form-check-input" %>
           <%= f.label :select_address_0, "ご自身の住所", class:"form-check-label" %><br>
           〒<%= current_customer.postal_code %>
@@ -26,13 +26,13 @@
           <%= current_customer.full_name %>
         </div>
 
-        <div class="form-check">
+        <div class="form-check my-3">
           <%= f.radio_button :select_address, "1", class:"form-check-input" %>
           <%= f.label :select_address_1, "登録済住所から選択", class:"form-check-label" %><br>
-          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display),class:"form-select" %>
         </div>
 
-        <div class="form-check">
+        <div class="form-check my-3">
           <%= f.radio_button :select_address, "2", class:"form-check-input" %>
           <%= f.label :select_address_2, "新しいお届け先", class:"form-check-label" %><br>
 

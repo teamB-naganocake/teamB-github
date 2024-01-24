@@ -19,10 +19,10 @@ Admin.create!(
 #       last_name_kana: "ミョウジ#{n + 1}",
 #       first_name_kana: "ナマエ#{n + 1}",
 #       email: "test#{n + 1}@test.com",
-#       postal_code: "#{n + 1}",
-#       address: "東京#{n + 1}",
-#       telephone_number: "",
-#       password: "00000#{n + 1}",
-#       password_confirmation: "00000#{n + 1}"
+#       postal_code: "000000#{n + 1}",
+#       address: "東京都渋谷区代々木神園町0-#{n + 1}",
+#       telephone_number: "0000000000#{n + 1}",
+#       password: "11111#{n + 1}",
+#       password_confirmation: "11111#{n + 1}"
 #  )
 # end
