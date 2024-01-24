@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    get '/genre/genre_search', to: 'searches#genre_search'
     get 'top', to: "homes#top"#, as: "top"
     get 'about', to: "homes#about", as: "about"
 
