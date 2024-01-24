@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    #@items = Item.all
+    # @items = Item.all
     @items = Item.page(params[:page])
     @genres = Genre.all
   end
@@ -11,10 +11,8 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
   end
 
-
   def list_params
     params.require(:item).permit()
   end
-
 
 end
