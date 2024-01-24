@@ -4,22 +4,25 @@
       <%= render 'public/searches/genre', genres: @genres %>
     </div>
     <div class="col-md-10 my-3">
-      <h1>商品一覧(全<%= @items.count %>件)</h1>
-    <div class="main-content mt-4">
-      <div class="row row-cols-5 p-3">
-        <% @items.each do |item| %>
-      <div class="col p-3" style="float:left;">
-        <%= link_to public_item_path(item) do %>
-        <%= image_tag item.get_image(120,120), fallback: "no_image.jpg" %>
-        <% end %>
-      <p><%= link_to item.name, public_item_path(item) %></p>
-      <p>
-        <% if item.is_active %>
-        <%= item.price.to_s(:delimited) %>円
-        <% elsif %>
-      <p style="color:red">販売停止</p>
-        <% end %>
-      </p>
+      <h1>商品一覧(全<%= @item_count.count %>件)</h1>
+      <div class="main-content mt-4">
+        <div class="row row-cols-5 p-3">
+          <% @items.each do |item| %>
+            <div class="col p-3" style="float:left;">
+                <%= link_to public_item_path(item) do %>
+                <%= image_tag item.get_image(120,120), fallback: "no_image.jpg" %>
+                <% end %>
+            <p><%= link_to item.name, public_item_path(item) %></p>
+            <p>
+               <% if item.is_active %>
+               <%= item.price.to_s(:delimited) %>円
+               <% elsif %>
+               <p style="color:red">販売停止</p>
+               <% end %>
+             </p>
+            </div>
+          <% end %>
+        </div>
       </div>
       <% end %>
      </div>

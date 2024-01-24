@@ -73,6 +73,7 @@ class Public::OrdersController < ApplicationController
                                   :shipping_cost,
                                   :total_payment,
                                   :payment_method,
-                                  :customer_id)
+                                  :customer_id,
+                                  :stats)
   end
 end
