@@ -1,49 +1,62 @@
 <div class="container">
   <div class="row mt-3 mb-3 offset-1 text-center">
-    <h1>マイページ</h1>
+    <h2>マイページ</h2>
   </div>
-  
-<h2>登録情報</h2>
-<%= link_to "編集する", public_customers_information_edit_path %>
 
-<table>
-  <tr>
-    <td>氏名</td>
-    <td><%= @customer.full_name %></td>
-  </tr>
-  
-  <tr>
-    <td>フリガナ</td>
-    <td><%= @customer.full_name_kana %></td>
-  </tr>
-  
-  <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  
-  <tr>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  
-  <tr>
-    <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
-</table>
+  <div class="row mt-3">
+    <div class="col-2">
+      <h3>登録情報</h3>
+    </div>
+    <div class="col">
+      <%= link_to "編集する", public_customers_information_edit_path, class:"btn btn-success" %>
+    </div>
 
-<div>
-  <p>配送先</p>
-  <%= link_to "一覧を見る", public_addresses_path %>
-</div>
+    <div class="col-10">
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active w-25">氏名</th>
+          <td><%= @customer.full_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active w-25">フリガナ</th>
+          <td><%= @customer.full_name_kana %></td>
+        </tr>
+        <tr>
+          <th class="table-active w-25">郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th class="table-active w-25">住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th class="table-active w-25">電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th class="table-active w-25">メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-<div>
-  <p>注文履歴</p>
-  <%= link_to "一覧を見る", public_orders_path %>
+  <div class="row mt-3">
+    <div class="col-2">
+      <h3>配送先</h3>
+    </div>
+    <div class="col">
+      <%= link_to "一覧を見る", public_addresses_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col-2">
+      <h3>注文履歴</h3>
+    </div>
+    <div class="col">
+      <%= link_to "一覧を見る", public_orders_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+
 </div>
