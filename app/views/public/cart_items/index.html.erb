@@ -29,7 +29,7 @@
                 <%= cart_item.item.name %>
               </td>
 
-              <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+              <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %>円</td>
 
               <td class="align-middle">
                 <%= form_with model: cart_item, url: public_cart_item_path(cart_item), method: :patch do |f| %>
@@ -40,7 +40,7 @@
 
               <td class="align-middle">
                 <% @sum += cart_item.subtotal %>
-                <%= cart_item.subtotal.to_s(:delimited) %>
+                <%= cart_item.subtotal.to_s(:delimited) %>円
               </td>
 
               <td class="align-middle text-center">
@@ -62,7 +62,7 @@
         <tbody>
           <tr>
             <th class="table-active w-50">合計金額</th>
-            <td class="w-50"><%= @sum.to_s(:delimited) %></td>
+            <td class="w-50"><%= @sum.to_s(:delimited) %>円</td>
           </tr>
         </tbody>
       </table>
