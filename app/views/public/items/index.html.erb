@@ -11,7 +11,7 @@
           <% @items.each do |item| %>
             <div class="col p-3" style="float:left;">
               <%= link_to public_item_path(item) do %>
-                <%= image_tag item.get_image(120,120), fallback: "no_image.jpg" %>
+                <%= image_tag item.get_image(100,100), fallback: "no_image.jpg" %>
               <% end %>
               <p><%= link_to item.name, public_item_path(item) %></p>
               <p>

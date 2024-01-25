@@ -9,24 +9,32 @@
     <form class="form-horizontal">
 
       <div class="form-group row my-3">
-        <%= f.label :"名前",class:"col-sm-3 control-label" %>
-        <%= f.label :"(姓)",class:"control-label" %>
+        <%= f.label :"名前",class:"col-sm-2 control-label" %>
+        <div class="col-1 text-right">
+          <%= f.label :"(姓)",class:"control-label" %>
+        </div>
         <div class="col-sm-3">
           <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",placeholder: "苗字",class:"form-control" %>
         </div>
-        <%= f.label :"(名)",class:"control-label" %>
+        <div class="col-1 text-right">
+          <%= f.label :"(名)",class:"control-label" %>
+        </div>
         <div class="col-sm-3">
           <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",placeholder: "名前",class:"form-control" %>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <%= f.label :"フリガナ",class:"col-sm-3 control-label" %>
-        <%= f.label :"(セイ)",class:"control-label" %>
+        <%= f.label :"フリガナ",class:"col-sm-2 control-label" %>
+        <div class="col-1 text-right">
+          <%= f.label :"(セイ)",class:"control-label" %>
+        </div>
         <div class="col-sm-3">
           <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "ミョウジ",class:"form-control" %>
         </div>
-        <%= f.label :"(メイ)",class:"control-label" %>
+        <div class="col-1 text-right">
+          <%= f.label :"(メイ)",class:"control-label" %>
+        </div>
         <div class="col-sm-3">
           <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",placeholder: "ナマエ",class:"form-control" %>
         </div>
