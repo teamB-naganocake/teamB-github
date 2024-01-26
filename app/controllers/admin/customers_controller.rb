@@ -2,7 +2,8 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @customers = Customer.all
+    #@customers = Customer.all
+    @customers = Customer.page(params[:page])
   end
 
   def show
@@ -16,9 +17,6 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-
-
-
       flash[:notice] = "会員情報を更新しました。"
       redirect_to admin_customer_path
     else
@@ -31,8 +29,8 @@ class Admin::CustomersController < ApplicationController
   private
   def customer_params
     params.require(:customer).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code,
-    :address, :phone_number, :email)
-    #会員ステータス？
+    :address, :telephone_number, :email, :is_active)
+
   end
 
 end

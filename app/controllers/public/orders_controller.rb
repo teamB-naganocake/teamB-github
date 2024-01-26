@@ -31,7 +31,6 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    # @cart_items = CartItem.where(customer_id: current_customer.id)
     @cart_items = current_customer.cart_items
     @sum = 0
     @order.shipping_cost = 800
@@ -56,12 +55,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page])
   end
 
   def show
     @order = Order.find(params[:id])
-    # @order_details = OrderDetail.where(order_id: @order.id)
     @order_details = @order.order_details
   end
 
@@ -75,6 +73,7 @@ class Public::OrdersController < ApplicationController
                                   :shipping_cost,
                                   :total_payment,
                                   :payment_method,
-                                  :customer_id)
+                                  :customer_id,
+                                  :stats)
   end
 end

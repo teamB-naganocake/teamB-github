@@ -1,38 +1,67 @@
-<h1>商品編集</h1>
-<%= form_with model: @item, url: admin_item_path,method: :patch do |f| %>
+<div class="container">
+  <div class="row my-3 offset-1 text-center">
+    <h2>商品編集</h2>
+  </div>
 
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @item, url: admin_item_path,method: :patch do |f| %>
+        <form class="form-horizontal ">
 
-<div>
-  <%= f.label :商品画像 %>
+          <div class="form-group row">
+            <%= f.label :商品画像,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.file_field :image, accept: "image/*",class:"form-control-file"  %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :商品名,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.text_field :name,class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :商品説明,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.text_area :introduction,class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :ジャンル,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--",class:"form-select" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :税抜価格,class:"col-sm-2 control-label" %>
+            <div class="col-sm-5">
+              <%= f.text_field :price,class:"form-control" %>円
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :販売ステータス,class:"col-sm-2 control-label" %>
+            <div class="col-sm-2">
+              <%= f.radio_button :is_active, true, checked: true, class:"form-check-input" %>
+              <%= f.label :is_active, "販売中",class:"col-sm- control-label", class:"form-check-label" %>
+            </div>
+
+            <div class="col-sm-2">
+              <%= f.radio_button :is_active, false, class:"form-check-input" %>
+              <%= f.label :is_active, "販売停止",class:"col-sm-2 control-label", class:"form-check-label" %>
+            </div>
+          </div>
+
+          <div class="text-center my-3">
+            <%= f.submit "変更を保存", class:"btn btn-success" %>
+          </div>
+        </form>
+      <% end %>
+    </div>
+  </div>
 
 </div>
-
-<div>
-  <%= f.label :商品名 %>
-  <%= f.text_field :name %>
-</div>
-<div>
-  <%= f.label :商品説明 %>
-  <%= f.text_area :introduction %>
-</div>
-<div>
-  <%= f.label :ジャンル %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %>
-</div>
-<div>
-  <%= f.label :税抜価格%>
-  <%= f.text_field :price %>
-</div>
-<div>
- <%= f.label :販売ステータス %>
- <%= f.radio_button :is_active, true, checked: true %>
- <%= f.label :is_active, "販売中" %>
- <%= f.radio_button :is_active, false %>
- <%= f.label :is_active, "販売停止中" %>
-</div>
-
-<div>
-  <%= f.submit "保存" %>
-</div>
-
-<% end %>

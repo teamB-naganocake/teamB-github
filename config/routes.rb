@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top', to: "homes#top"#, as: "top"
-    get 'about', to: "homes#about", as: "about"
+    get 'about', to: "homes#about"#, as: "about"
     resources :orders_details, only: [:update]
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    get '/genre/genre_search', to: 'searches#genre_search'
     get 'top', to: "homes#top"#, as: "top"
     get 'about', to: "homes#about", as: "about"
 
@@ -31,8 +32,8 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index, :edit, :create, :update, :destroy]
 
     get 'orders/thanks', to: "orders#thanks"
-    post 'orders/confirm', to: "orders#confirm"
     resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm', to: "orders#confirm"
 
     resources :cart_items,only: [:index,:create,:update,:destroy] do
       collection do
@@ -45,6 +46,11 @@ Rails.application.routes.draw do
     patch "customers/information", to: "customers#update"
     get 'customers/unsubscribe', to: "customers#unsubscribe"
     patch 'customers/withdraw', to: "customers#withdraw"
+
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get "search" => "searches#search"
+
 end
